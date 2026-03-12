@@ -3,100 +3,342 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SynthQS | Web Developer & AI Automation Agency</title>
-
-<link rel="stylesheet" href="style.css">
-
-<!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<title>SynthQS | AI Automation Agency</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #000;
-    color: #fff;
-    text-align: center;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
-header {
-    padding: 80px 20px;
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
 }
 
-h1 {
-    font-size: 40px;
+/* AI Animated Grid Background */
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background-image:
+linear-gradient(rgba(0,245,196,0.07) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,245,196,0.07) 1px, transparent 1px);
+background-size:40px 40px;
+z-index:-2;
+animation:gridMove 20s linear infinite;
 }
 
-section {
-    padding: 60px 20px;
+@keyframes gridMove{
+0%{transform:translate(0,0);}
+100%{transform:translate(40px,40px);}
 }
 
-input, textarea {
-    width: 40%;
-    padding: 12px;
-    margin: 10px;
-    border-radius: 6px;
-    border: none;
+/* Floating AI Glow */
+
+.glow{
+position:absolute;
+width:350px;
+height:350px;
+background:#00f5c4;
+filter:blur(120px);
+opacity:0.2;
+border-radius:50%;
+animation:float 10s infinite ease-in-out;
 }
 
-textarea {
-    width: 50%;
-    height: 100px;
+.glow1{
+top:5%;
+left:5%;
 }
 
-button {
-    padding: 12px 25px;
-    background: #00f5c4;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
+.glow2{
+bottom:10%;
+right:10%;
+animation-delay:5s;
 }
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-80px)}
+}
+
+/* Navbar */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+}
+
+nav h2{
+color:#00f5c4;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#00f5c4;
+}
+
+/* Hero */
+
+.hero{
+text-align:center;
+padding:150px 20px;
+}
+
+.hero h1{
+font-size:55px;
+}
+
+.hero span{
+color:#00f5c4;
+}
+
+.hero p{
+margin-top:15px;
+opacity:0.8;
+}
+
+.hero button{
+margin-top:30px;
+padding:15px 30px;
+background:#00f5c4;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero button:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px #00f5c4;
+}
+
+/* Sections */
+
+section{
+padding:90px 10%;
+text-align:center;
+}
+
+h2{
+color:#00f5c4;
+margin-bottom:25px;
+font-size:34px;
+}
+
+/* Services */
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.service{
+background:rgba(255,255,255,0.05);
+padding:35px;
+border-radius:12px;
+backdrop-filter:blur(10px);
+transition:0.4s;
+}
+
+.service:hover{
+transform:translateY(-12px);
+box-shadow:0 0 25px rgba(0,245,196,0.2);
+}
+
+/* Contact Section */
+
+.contact-container{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:40px;
+}
+
+.contact-card{
+width:100%;
+max-width:500px;
+background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:12px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 25px rgba(0,245,196,0.15);
+}
+
+.contact-card input,
+.contact-card textarea{
+width:100%;
+padding:14px;
+margin:12px 0;
+border:none;
+border-radius:6px;
+background:#111;
+color:white;
+outline:none;
+transition:0.3s;
+}
+
+.contact-card input:focus,
+.contact-card textarea:focus{
+box-shadow:0 0 10px #00f5c4;
+}
+
+.contact-card textarea{
+height:120px;
+}
+
+.contact-card button{
+width:100%;
+padding:14px;
+background:#00f5c4;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.contact-card button:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #00f5c4;
+}
+
+/* Footer */
+
+footer{
+text-align:center;
+padding:25px;
+background:#020202;
+margin-top:50px;
+}
+
 </style>
 
 </head>
+
 <body>
 
-<header>
-    <h1>SynthQS</h1>
-    <p>Web Developer | AI Automation | Digital Solutions</p>
-</header>
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<nav>
+
+<h2>SynthQS</h2>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+</nav>
+
+<div class="hero">
+
+<h1>Build Smart Systems with <span>AI Automation</span></h1>
+
+<p>Web Development • AI Automation • Chatbot Systems</p>
+
+<button>Start Project</button>
+
+</div>
 
 <section>
-    <h2>About Us</h2>
-    <p>
-        SynthQS is a modern digital agency specializing in high-performance
-        websites and AI-powered automation systems for growing businesses.
-    </p>
+
+<h2>About Us</h2>
+
+<p>
+SynthQS creates modern websites and AI automation solutions that help
+businesses scale faster and automate repetitive work.
+</p>
+
 </section>
 
 <section>
-    <h2>Contact with us</h2>
-    <form id="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required><br>
-        <input type="email" name="email" placeholder="Your Email" required><br>
-        <textarea name="message" placeholder="Your Message" required></textarea><br>
-        <button type="submit">Send Message</button>
-    </form>
+
+<h2>Services</h2>
+
+<div class="services">
+
+<div class="service">
+<h3>Website Development</h3>
+<p>High performance responsive websites.</p>
+</div>
+
+<div class="service">
+<h3>AI Automation</h3>
+<p>Automate workflows using powerful AI tools.</p>
+</div>
+
+<div class="service">
+<h3>AI Chatbots</h3>
+<p>Smart chatbots for customer support.</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- Watson Assistant Chatbot -->
-<script>
-  window.watsonAssistantChatOptions = {
-    integrationID: "e1c920c2-9a1f-4b66-8ef8-4c49b7b02bf6",
-    region: "au-syd",
-    serviceInstanceID: "b51a64b8-8d3d-444a-acc8-68b17bc7f3f1",
-    onLoad: function(instance) {
-      instance.render();
-    }
-  };
+<section>
 
-  setTimeout(function () {
-    var script = document.createElement('script');
-    script.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/latest/WatsonAssistantChatEntry.js";
-    document.body.appendChild(script);
-  }, 1000);
-</script>
+<h2>Contact Us</h2>
+
+<div class="contact-container">
+
+<div class="contact-card">
+
+<form>
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<textarea placeholder="Your Message" required></textarea>
+
+<button>Send Message</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 SynthQS | AI Automation Agency
+
+</footer>
 
 </body>
 </html>
